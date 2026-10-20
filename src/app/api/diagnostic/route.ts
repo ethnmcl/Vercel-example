@@ -28,6 +28,7 @@ export async function GET(request: NextRequest) {
       region: vercelRegion,
       hostUrl: vercelUrl,
       gitCommit: vercelGitCommit,
+      hasApiKey: Boolean(process.env.MY_API_KEY && process.env.MY_API_KEY !== "your_secret_api_key_here"),
     },
     geo: {
       ip: vercelIp,
