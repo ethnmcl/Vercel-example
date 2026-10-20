@@ -265,7 +265,7 @@ export default function Home() {
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Hosting Status</div>
           <div className={styles.statValue}>
-            <span style={{ color: diagnosticData?.environment.isVercel ? "var(--accent-green)" : "var(--accent-cyan)" }}>
+            <span style={{ color: diagnosticData?.environment.isVercel ? "var(--accent-purple-bright)" : "var(--accent-purple-light)" }}>
               {diagnosticData?.environment.isVercel ? "Vercel Edge" : "Local Host"}
             </span>
           </div>
@@ -277,7 +277,7 @@ export default function Home() {
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Roundtrip Latency</div>
           <div className={styles.statValue}>
-            <span style={{ color: "var(--accent-cyan)" }}>
+            <span style={{ color: "var(--accent-purple-light)" }}>
               {lastLatency !== null ? `${lastLatency} ms` : "..."}
             </span>
           </div>
@@ -299,7 +299,7 @@ export default function Home() {
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Readiness Score</div>
           <div className={styles.statValue}>
-            <span style={{ color: "var(--accent-green)" }}>{progressPercent}%</span>
+            <span style={{ color: "var(--accent-purple-light)" }}>{progressPercent}%</span>
           </div>
           <div className={styles.statDesc}>
             {completedChecks} of {checklist.length} pre-flight items checked
@@ -343,7 +343,7 @@ export default function Home() {
               <div className={styles.panel}>
                 <div className={styles.panelTitle}>
                   <span>Latency & Ping Monitor</span>
-                  <span style={{ fontSize: "0.8rem", color: "var(--accent-green)" }}>• Online</span>
+                  <span style={{ fontSize: "0.8rem", color: "var(--accent-purple-light)" }}>• Online</span>
                 </div>
                 <div className={styles.panelSub}>
                   Live roundtrip latency against the Next.js serverless route <code>/api/diagnostic</code>.
@@ -577,7 +577,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div style={{ textAlign: "right" }}>
-                  <span style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--accent-green)" }}>
+                  <span style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--accent-purple-light)" }}>
                     {progressPercent}%
                   </span>
                   <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Ready to Deploy</div>
