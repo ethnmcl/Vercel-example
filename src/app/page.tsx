@@ -48,11 +48,16 @@ interface ChecklistItem {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"diagnostics" | "playground" | "checklist" | "guide">("diagnostics");
+  const [theme, setTheme] = useState<"green" | "purple">("green");
   const [diagnosticData, setDiagnosticData] = useState<DiagnosticResponse | null>(null);
   const [isPinging, setIsPinging] = useState(false);
   const [lastLatency, setLastLatency] = useState<number | null>(null);
   const [pingHistory, setPingHistory] = useState<PingRecord[]>([]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   // Playground state with deterministic initial state
   const [echoPayload, setEchoPayload] = useState(
@@ -223,6 +228,24 @@ export default function Home() {
         </div>
 
         <div className={styles.headerBadges}>
+          <div className={styles.themeSwitcher}>
+            <button
+              type="button"
+              className={`${styles.themePill} ${theme === "green" ? styles.themePillActive : ""}`}
+              onClick={() => setTheme("green")}
+              title="Switch to Emerald Green UI"
+            >
+              <span>🟢 Emerald</span>
+            </button>
+            <button
+              type="button"
+              className={`${styles.themePill} ${theme === "purple" ? styles.themePillActive : ""}`}
+              onClick={() => setTheme("purple")}
+              title="Switch to Royal Purple UI"
+            >
+              <span>🟣 Purple</span>
+            </button>
+          </div>
           <div className={styles.liveBadge}>
             <span className={styles.liveDot}></span>
             <span>Edge Ready</span>
@@ -265,7 +288,7 @@ export default function Home() {
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Hosting Status</div>
           <div className={styles.statValue}>
-            <span style={{ color: diagnosticData?.environment.isVercel ? "var(--accent-purple-bright)" : "var(--accent-purple-light)" }}>
+            <span style={{ color: diagnosticData?.environment.isVercel ? "var(--accent-theme-bright)" : "var(--accent-theme-light)" }}>
               {diagnosticData?.environment.isVercel ? "Vercel Edge" : "Local Host"}
             </span>
           </div>
@@ -277,7 +300,7 @@ export default function Home() {
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Roundtrip Latency</div>
           <div className={styles.statValue}>
-            <span style={{ color: "var(--accent-purple-light)" }}>
+            <span style={{ color: "var(--accent-theme-bright)" }}>
               {lastLatency !== null ? `${lastLatency} ms` : "..."}
             </span>
           </div>
@@ -299,7 +322,7 @@ export default function Home() {
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Readiness Score</div>
           <div className={styles.statValue}>
-            <span style={{ color: "var(--accent-purple-light)" }}>{progressPercent}%</span>
+            <span style={{ color: "var(--accent-theme-bright)" }}>{progressPercent}%</span>
           </div>
           <div className={styles.statDesc}>
             {completedChecks} of {checklist.length} pre-flight items checked
@@ -343,7 +366,7 @@ export default function Home() {
               <div className={styles.panel}>
                 <div className={styles.panelTitle}>
                   <span>Latency & Ping Monitor</span>
-                  <span style={{ fontSize: "0.8rem", color: "var(--accent-purple-light)" }}>• Online</span>
+                  <span style={{ fontSize: "0.8rem", color: "var(--accent-theme-bright)" }}>• Online</span>
                 </div>
                 <div className={styles.panelSub}>
                   Live roundtrip latency against the Next.js serverless route <code>/api/diagnostic</code>.
@@ -577,7 +600,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div style={{ textAlign: "right" }}>
-                  <span style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--accent-purple-light)" }}>
+                  <span style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--accent-theme-bright)" }}>
                     {progressPercent}%
                   </span>
                   <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Ready to Deploy</div>
