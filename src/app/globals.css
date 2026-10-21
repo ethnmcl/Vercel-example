@@ -11,9 +11,10 @@
   --bg-card-border: rgba(52, 211, 153, 0.15);
   --bg-card-border-active: rgba(52, 211, 153, 0.55);
 
-  --text-primary: #f0fdf4;
-  --text-secondary: #a7f3d0;
-  --text-muted: #6ee7b7;
+  /* Red Word / Text Palette */
+  --text-primary: #ff4444;
+  --text-secondary: #ff8080;
+  --text-muted: #f87171;
 
   /* Emerald Spectrum Accents */
   --accent-theme: #10b981;
@@ -50,9 +51,10 @@
   --bg-card-border: rgba(192, 132, 252, 0.12);
   --bg-card-border-active: rgba(192, 132, 252, 0.45);
 
-  --text-primary: #faf5ff;
-  --text-secondary: #c4b5fd;
-  --text-muted: #8b7ca8;
+  /* Red Word / Text Palette */
+  --text-primary: #ff4444;
+  --text-secondary: #ff8080;
+  --text-muted: #f87171;
 
   /* Purple Spectrum Accents */
   --accent-theme: #a855f7;
